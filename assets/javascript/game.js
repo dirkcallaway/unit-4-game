@@ -7,19 +7,21 @@ $(document).ready(function () {
     var negan = 0;
     var targetNumber = 0;
     var currentAmount = 0;
-    var zombieNumber = 1;
     var winTotal = 0;
     var lossTotal = 0;
+    var randomZombie = 0;
+    var zombiePictures = ["assets/images/zombie1.jpg", "assets/images/zombie2.jpg", "assets/images/zombie3.png"];
 
     //functions
     //Sets starting numbers for variables and displays Zobie's #
     var randomStartingNumbers = function () {
         currentAmount = 0;
-        rick = Math.floor((Math.random() * 21) + 1);
-        michonne = Math.floor((Math.random() * 51) + 10);
-        daryl = Math.floor((Math.random() * 71) + 20);
-        negan = Math.floor((Math.random() * 6) + 1);
-        targetNumber = Math.floor((Math.random() * 450) + 175);
+        randomZombie = Math.floor(Math.random() * 3);
+        rick = Math.floor((Math.random() * 13) + 1);
+        michonne = Math.floor((Math.random() * 13) + 1);
+        daryl = Math.floor((Math.random() * 13) + 1);
+        negan = Math.floor((Math.random() * 13) + 1);
+        targetNumber = Math.floor((Math.random() * 122) + 19);
 
         $("#target-number").text(targetNumber);
         $("#current-amount").text(currentAmount);
@@ -33,10 +35,12 @@ $(document).ready(function () {
         if (currentAmount === targetNumber) {
             //Trigger Win
             winTotal++;
+            $(".zombie").attr("src", zombiePictures[randomZombie]);
             randomStartingNumbers();
         } else if (currentAmount > targetNumber) {
             //Trigger Loss
             lossTotal++;
+            $(".zombie").attr("src", zombiePictures[randomZombie]);
             randomStartingNumbers();
         }
     }
@@ -44,7 +48,7 @@ $(document).ready(function () {
     //Calls
 
     randomStartingNumbers();
-    
+
     //Rick Button Click
     $("#rick").on("click", function () {
         currentAmount += rick;
