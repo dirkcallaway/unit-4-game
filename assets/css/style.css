@@ -1,0 +1,11 @@
+.jumbotron{
+    background:transparent;
+}
+
+body {
+    background-image: url("../images/bg.jpg");
+}
+
+.instructions{
+    color: white;
+}
